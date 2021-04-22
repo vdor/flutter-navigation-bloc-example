@@ -13,6 +13,7 @@ class RouteParser extends RouteInformationParser<PageConfig> {
     }
 
     final path = '/' + uri.pathSegments[0];
+
     switch (path) {
       case splashPath:
         return SplashPageConfig();
@@ -23,7 +24,7 @@ class RouteParser extends RouteInformationParser<PageConfig> {
       case tasksPath:
         return TasksPageConfig();
       case taskDetailPath:
-        return TaskDetailPageConfig(path: path);
+        return TaskDetailPageConfig(path: routeInformation.location);
       case settingsPath:
         return SettingsConfig();
       default:

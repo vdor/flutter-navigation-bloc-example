@@ -55,7 +55,7 @@ class AppRouterDelegate extends RouterDelegate<PageConfig> with ChangeNotifier {
   @override
   Future<void> setNewRoutePath(PageConfig configuration) {
     final shouldSetPath = bloc.state.pages.isEmpty ||
-        (bloc.state.pages.last.arguments as PageConfig) == configuration;
+        (bloc.state.pages.last.arguments as PageConfig) != configuration;
 
     if (shouldSetPath) {
       bloc.add(RouterSetPathEvent([configuration]));
@@ -63,6 +63,10 @@ class AppRouterDelegate extends RouterDelegate<PageConfig> with ChangeNotifier {
 
     return SynchronousFuture(null);
   }
+
+  @override
+  PageConfig get currentConfiguration =>
+      bloc.state.pages.last.arguments as PageConfig;
 
   List<Page> _buildPages() {
     return List.unmodifiable(bloc.state.pages);
