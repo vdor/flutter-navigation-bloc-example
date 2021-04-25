@@ -13,12 +13,9 @@ void main() {
 final routerBloc = RouterBloc(SplashPageConfig());
 
 class App extends StatelessWidget {
-  final routerDelegate = AppRouterDelegate();
+  final routerDelegate = AppRouterDelegate(bloc: routerBloc);
   final routeInformationParser = RouteParser();
 
-  App() {
-    routerDelegate.setBloc(routerBloc);
-  }
   @override
   Widget build(BuildContext context) {
     return BlocProvider(

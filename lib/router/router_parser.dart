@@ -6,7 +6,11 @@ class RouteParser extends RouteInformationParser<PageConfig> {
   @override
   Future<PageConfig> parseRouteInformation(
       RouteInformation routeInformation) async {
-    final uri = Uri.parse(routeInformation.location);
+    if (routeInformation.location == null) {
+      return SplashPageConfig();
+    }
+
+    final uri = Uri.parse(routeInformation.location!);
 
     if (uri.pathSegments.isEmpty) {
       return SplashPageConfig();
@@ -24,7 +28,7 @@ class RouteParser extends RouteInformationParser<PageConfig> {
       case tasksPath:
         return TasksPageConfig();
       case taskDetailPath:
-        return TaskDetailPageConfig(path: routeInformation.location);
+        return TaskDetailPageConfig(path: routeInformation.location!);
       case settingsPath:
         return SettingsConfig();
       default:

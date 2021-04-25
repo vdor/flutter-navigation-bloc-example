@@ -5,20 +5,17 @@ import 'package:flutter_navigation_bloc_example/router/bloc/events.dart';
 import 'package:flutter_navigation_bloc_example/router/page_configs/base.dart';
 
 class AppRouterDelegate extends RouterDelegate<PageConfig> with ChangeNotifier {
-  RouterBloc bloc;
+  late final RouterBloc bloc;
 
   final GlobalKey<NavigatorState> navigatorKey;
 
-  AppRouterDelegate() : navigatorKey = GlobalKey();
-
-  bool get canPop => bloc.state.pages.isNotEmpty;
-
-  setBloc(RouterBloc bloc) {
-    this.bloc = bloc;
+  AppRouterDelegate({required this.bloc}) : navigatorKey = GlobalKey() {
     bloc.stream.listen((state) {
       notifyListeners();
     });
   }
+
+  bool get canPop => bloc.state.pages.isNotEmpty;
 
   @override
   Widget build(BuildContext context) {

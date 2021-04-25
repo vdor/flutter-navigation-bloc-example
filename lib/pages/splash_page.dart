@@ -14,7 +14,7 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
-  Timer timer;
+  Timer? timer;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class _SplashPageState extends State<SplashPage> {
             style: Theme.of(context)
                 .textTheme
                 .headline3
-                .copyWith(color: Colors.white)),
+                ?.copyWith(color: Colors.white)),
       ),
     );
   }
@@ -40,7 +40,7 @@ class _SplashPageState extends State<SplashPage> {
 
   deactivate() {
     super.deactivate();
-    timer.cancel();
+    timer?.cancel();
   }
 
   _goToWelcomePage(BuildContext context) {

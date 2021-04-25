@@ -4,7 +4,7 @@ import 'package:flutter/widgets.dart';
 
 abstract class PageConfig extends Equatable {
   const PageConfig({
-    @required this.key,
+    required this.key,
   });
 
   final String key;

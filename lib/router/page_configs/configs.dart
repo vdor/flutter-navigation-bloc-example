@@ -58,7 +58,8 @@ class TasksPageConfig extends PageConfig {
 class TaskDetailPageConfig extends PageConfig {
   final String path;
 
-  const TaskDetailPageConfig({String key = 'TaskDetail', @required this.path});
+  const TaskDetailPageConfig({String key = 'TaskDetail', required this.path})
+      : super(key: key);
 
   TaskDetailPageConfig.byTaskId(int id)
       : path = TaskDetailPageConfig.buildPathById(id),
